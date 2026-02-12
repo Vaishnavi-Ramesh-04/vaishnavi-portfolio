@@ -103,13 +103,15 @@ function Hero() {
             <FaGithub />
           </a>
 
-          <a 
+ <a 
   href="/vaishnavi-portfolio/resume.pdf"
-  download
+  target="_blank"
+  rel="noopener noreferrer"
   className="px-8 py-3 border border-[#D4AF37] text-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-[#0B2E26] transition duration-500"
 >
   Resume
 </a>
+
 
         </div>
       </motion.div>
