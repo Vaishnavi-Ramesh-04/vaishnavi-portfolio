@@ -61,11 +61,12 @@ function Hero() {
       >
         <div className="absolute w-[480px] h-[400px] bg-[#0F3A30] rounded-[60%] blur-3xl"></div>
 
-        <img
-          src="/vaishnavi.jpg"
-          alt="Vaishnavi"
-          className="relative w-[400px] h-[400px] object-cover rounded-full border border-[#D4AF37]/40 shadow-[0_0_80px_rgba(212,175,55,0.25)]"
-        />
+        <img 
+  src="/vaishnavi-portfolio/vaishnavi.jpg"
+  alt="Vaishnavi"
+  className="relative w-[400px] h-[400px] object-cover rounded-full border border-[#D4AF37]/40 shadow-[0_0_60px_rgba(212,175,55,0.2)]"
+/>
+
       </motion.div>
 
       <motion.div
