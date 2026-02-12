@@ -103,10 +103,14 @@ function Hero() {
             <FaGithub />
           </a>
 
-          <a href="/resume.pdf" download
-            className="px-8 py-3 border border-[#D4AF37] text-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-[#0B2E26] transition duration-500">
-            Resume
-          </a>
+          <a 
+  href="/vaishnavi-portfolio/resume.pdf"
+  download
+  className="px-8 py-3 border border-[#D4AF37] text-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-[#0B2E26] transition duration-500"
+>
+  Resume
+</a>
+
         </div>
       </motion.div>
     </section>
@@ -115,7 +119,7 @@ function Hero() {
 
 
 /* ---------------- SECTION WRAPPER STYLE ---------------- */
-const sectionStyle = "py-28 px-10";
+const sectionStyle = "py-28 px-10 text-lg md:text-xl";
 
 /* ---------------- ABOUT ---------------- */
 function About() {
@@ -128,17 +132,17 @@ function About() {
         viewport={{ once: true }}
         className="text-center max-w-5xl mx-auto"
       >
-        <h2 className="text-5xl font-light tracking-widest text-[#D4AF37] mb-6">
+        <h2 className="text-6xl md:text-7xl font-light tracking-widest text-[#D4AF37] mb-6">
           About
         </h2>
 
         <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mb-12"></div>
 
-        <p className="italic text-lg text-[#F5F1E8]/80 leading-relaxed">
+        <p className="italic text-xl md:text-2xl text-[#F5F1E8]/80 leading-relaxed">
           "Building elegant digital experiences through clean code and continuous learning."
         </p>
 
-        <p className="mt-8 text-[#F5F1E8]/80 leading-relaxed">
+        <p className="mt-8 text-lg md:text-xl text-[#F5F1E8]/80 leading-relaxed">
           I am a dedicated web developer passionate about creating refined, user-focused web applications. My expertise lies in modern front-end technologies and frameworks, enabling me to deliver efficient, scalable, and user-focused solutions. I am driven by continuous improvement, a strong attention to detail, and a commitment to writing clean, maintainable code. I bring a continuous-learning mindset and a passion for technology to every project I undertake.
         </p>
       </motion.div>
@@ -155,7 +159,7 @@ function Skills() {
   return (
     <section id="skills" className={sectionStyle}>
       
-      <h2 className="text-5xl font-light tracking-widest text-[#D4AF37] text-center">
+      <h2 className="text-6xl md:text-7xl font-light tracking-widest text-[#D4AF37] text-center">
         Skills
       </h2>
 
@@ -184,21 +188,21 @@ function Skills() {
 function SkillCard({ title, children }) {
   return (
     <div className={cardStyle}>
-      <h3 className="text-xl tracking-wide text-[#D4AF37] mb-4">{title}</h3>
-      <p className="text-[#F5F1E8]/80">{children}</p>
+      <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37] mb-4">{title}</h3>
+      <p className="text-lg md:text-xl text-[#F5F1E8]/80">{children}</p>
     </div>
   );
 }
 function QualificationCertifications() {
   return (
-    <section id="qualification" className="py-28 px-10 bg-[#123D33]">
+    <section id="qualification" className="py-28 px-10 bg-[#123D33] text-lg md:text-xl">
 
       <motion.h2
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-4xl font-light tracking-widest text-[#D4AF37] text-center mb-6"
+        className="text-5xl md:text-6xl font-light tracking-widest text-[#D4AF37] text-center mb-6"
       >
         Qualification & Certifications
       </motion.h2>
@@ -214,17 +218,17 @@ function QualificationCertifications() {
           viewport={{ once: true }}
           className="bg-[#0B2E26] p-10 rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition duration-500"
         >
-          <h3 className="text-2xl font-light mb-6 text-[#D4AF37] tracking-wide">
+          <h3 className="text-3xl md:text-4xl font-light mb-6 text-[#D4AF37] tracking-wide">
             Qualification
           </h3>
 
-          <p className="text-[#F5F1E8] leading-7">
+          <p className="text-lg md:text-xl text-[#F5F1E8] leading-7">
             <strong>B.Tech Computer Science</strong><br />
             SCMS School of Engineering and Technology<br />
             2023 – 2027
           </p>
 
-          <p className="mt-6 text-[#F5F1E8] leading-7">
+          <p className="mt-6 text-lg md:text-xl text-[#F5F1E8] leading-7">
             <strong>Higher Secondary (CBSE)</strong><br />
             Vyasa Vidya Nikethan Central School<br />
             2021 – 2023<br />
@@ -239,11 +243,11 @@ function QualificationCertifications() {
           viewport={{ once: true }}
           className="bg-[#0B2E26] p-10 rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition duration-500"
         >
-          <h3 className="text-2xl font-light mb-6 text-[#D4AF37] tracking-wide">
+          <h3 className="text-3xl md:text-4xl font-light mb-6 text-[#D4AF37] tracking-wide">
             Certifications
           </h3>
 
-          <ul className="text-[#F5F1E8] space-y-3 leading-7">
+          <ul className="text-lg md:text-xl text-[#F5F1E8] space-y-3 leading-7">
             <li>Keltron Internship Certification (Web Development)</li>
             <li>Cognifyz – Machine Learning Internship</li>
             <li>Saiket Internship – Web Development</li>
@@ -262,14 +266,14 @@ function QualificationCertifications() {
 
 function Experience() {
   return (
-    <section className="py-28 px-10 bg-[#0B2E26]">
+    <section className="py-28 px-10 bg-[#0B2E26] text-lg md:text-xl">
 
       <motion.h2
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-4xl font-light tracking-widest text-[#D4AF37] text-center mb-6"
+        className="text-5xl md:text-6xl font-light tracking-widest text-[#D4AF37] text-center mb-6"
       >
         Experience & Leadership
       </motion.h2>
@@ -281,7 +285,7 @@ function Experience() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto bg-[#123D33] p-10 rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition duration-500 text-[#F5F1E8] space-y-6"
+        className="max-w-4xl mx-auto bg-[#123D33] p-10 rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition duration-500 text-lg md:text-xl text-[#F5F1E8] space-y-6"
       >
         <p>
           <strong>Student Member</strong><br />
@@ -300,14 +304,14 @@ function Experience() {
 
 function Projects() {
   return (
-    <section id="projects" className="py-28 px-10 bg-[#123D33]">
+    <section id="projects" className="py-28 px-10 bg-[#123D33] text-lg md:text-xl">
 
       <motion.h2
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-4xl font-light tracking-widest text-[#D4AF37] text-center mb-6"
+        className="text-5xl md:text-6xl font-light tracking-widest text-[#D4AF37] text-center mb-6"
       >
         Projects
       </motion.h2>
@@ -357,10 +361,10 @@ function ProjectCard({ title, desc }) {
       whileHover={{ scale: 1.03 }}
       className="bg-[#0B2E26] p-10 rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition duration-500"
     >
-      <h3 className="text-xl font-light text-[#D4AF37] mb-4 tracking-wide">
+      <h3 className="text-2xl md:text-3xl font-light text-[#D4AF37] mb-4 tracking-wide">
         {title}
       </h3>
-      <p className="text-[#F5F1E8] leading-7">
+      <p className="text-lg md:text-xl text-[#F5F1E8] leading-7">
         {desc}
       </p>
     </motion.div>
@@ -394,15 +398,15 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 px-10 bg-[#123D33] text-center">
+    <section id="contact" className="py-28 px-10 bg-[#123D33] text-center text-lg md:text-xl">
 
-      <h2 className="text-5xl font-light tracking-widest text-[#D4AF37] mb-6">
+      <h2 className="text-6xl md:text-7xl font-light tracking-widest text-[#D4AF37] mb-6">
         Contact
       </h2>
 
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mb-16"></div>
 
-      <div className="max-w-xl mx-auto bg-[#0F3A30] border border-[#D4AF37]/20 backdrop-blur-md rounded-2xl p-10 shadow-xl">
+      <div className="max-w-xl mx-auto bg-[#0F3A30] border border-[#D4AF37]/20 backdrop-blur-md rounded-2xl p-10 shadow-xl text-lg md:text-xl">
 
         <form ref={form} onSubmit={sendEmail} className="space-y-6">
 
@@ -455,7 +459,7 @@ function Contact() {
 }
 function Footer() {
   return (
-    <footer className="py-12 bg-[#0B2E26] border-t border-[#D4AF37]/20 text-center">
+    <footer className="py-12 bg-[#0B2E26] border-t border-[#D4AF37]/20 text-center text-lg md:text-xl">
 
       <p className="text-[#F5F1E8]/70 tracking-wide">
         © 2026 <span className="text-[#D4AF37]">Vaishnavi R</span> | All Rights Reserved
