@@ -170,7 +170,7 @@ function Skills() {
 
       <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
         <SkillCard title="Frontend">
-          HTML, CSS, JavaScript, React, Tailwind
+          HTML, CSS, JavaScript, React, Tailwind CSS
         </SkillCard>
         <SkillCard title="Backend">
           Python, Node.js, PHP, MySQL
@@ -256,7 +256,7 @@ function QualificationCertifications() {
             <li>Web Developer Bootcamp (Udemy)</li>
             <li>LCC Python Certification</li>
             <li>C, C++, Python – G-Tech</li>
-            <li>Infosys Springboard Certifications</li>
+            <li>Infosys Springboard Certifications (Overview of Agile and DevOps, Software Engineering Fundamentals, Python Bootcamp)</li>
             <li>NPTEL – Developing Soft Skills & Personality</li>
           </ul>
         </motion.div>
@@ -322,10 +322,6 @@ function Projects() {
 
       <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
 
-        <ProjectCard 
-          title="Portfolio Website"
-          desc="Designed and developed a personal portfolio website using React and Tailwind CSS."
-        />
 
         <ProjectCard 
           title="Machine Learning Projects"
