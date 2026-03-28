@@ -320,7 +320,13 @@ function Projects() {
 
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mb-16"></div>
 
+
       <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+
+        <ProjectCard 
+          title="ClassHub"
+          desc="Developed ClassHub, a smart classroom management web application that centralizes assignments, announcements, and communication using a role-based system for coordinators, teachers, and students. Built with React, Node.js, and MySQL, the platform improves academic workflow efficiency through features like automated reminders and submission tracking."
+        />
 
 
         <ProjectCard 
