@@ -383,6 +383,21 @@ function Contact() {
   const sendEmail = (e) => {
     e.preventDefault();
 
+    // Set the send_time input value to the current time
+    const formEl = form.current;
+    if (formEl) {
+      const now = new Date();
+      const timeString = now.toLocaleString();
+      let timeInput = formEl.querySelector('input[name="send_time"]');
+      if (!timeInput) {
+        timeInput = document.createElement('input');
+        timeInput.type = 'hidden';
+        timeInput.name = 'send_time';
+        formEl.appendChild(timeInput);
+      }
+      timeInput.value = timeString;
+    }
+
     emailjs
       .sendForm(
         "service_9rva5sj",
@@ -413,6 +428,7 @@ function Contact() {
       <div className="max-w-xl mx-auto bg-[#0F3A30] border border-[#D4AF37]/20 backdrop-blur-md rounded-2xl p-10 shadow-xl text-lg md:text-xl">
 
         <form ref={form} onSubmit={sendEmail} className="space-y-6">
+          {/* send_time will be set dynamically before sending */}
 
           <input
             type="text"
