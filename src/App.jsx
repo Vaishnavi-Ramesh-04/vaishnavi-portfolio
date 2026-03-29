@@ -374,7 +374,6 @@ function ProjectCard({ title, desc }) {
     </motion.div>
   );
 }
-
 /* ---------------- CONTACT ---------------- */
 function Contact() {
   const form = useRef();
@@ -383,25 +382,35 @@ function Contact() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // Set the send_time input value to the current date and time (DD-MM-YYYY HH:mm)
-    const formEl = form.current;
-    if (formEl) {
-      const now = new Date();
-      const pad = (n) => n.toString().padStart(2, '0');
-      const dateString = pad(now.getDate()) + '-' + pad(now.getMonth() + 1) + '-' + now.getFullYear();
-      const timeString = pad(now.getHours()) + ':' + pad(now.getMinutes());
-      const dateTimeString = dateString + ' ' + timeString;
-      const timeInput = formEl.elements['send_time'];
-      if (timeInput) {
-        timeInput.value = dateTimeString;
-      }
-    }
+    const now = new Date();
+    const pad = (n) => n.toString().padStart(2, "0");
+
+    const dateString =
+      pad(now.getDate()) +
+      "-" +
+      pad(now.getMonth() + 1) +
+      "-" +
+      now.getFullYear();
+
+    const timeString =
+      pad(now.getHours()) + ":" + pad(now.getMinutes());
+
+    const dateTimeString = dateString + " " + timeString;
+
+    const formData = new FormData(form.current);
+
+    const templateParams = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+      send_time: dateTimeString, // ✅ now this will show in email
+    };
 
     emailjs
-      .sendForm(
+      .send(
         "service_9rva5sj",
         "template_a1uvesa",
-        form.current,
+        templateParams,
         "L0wbSU8xclxUEN0-V"
       )
       .then(() => {
@@ -416,8 +425,10 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-28 px-10 bg-[#123D33] text-center text-lg md:text-xl">
-
+    <section
+      id="contact"
+      className="py-28 px-10 bg-[#123D33] text-center text-lg md:text-xl"
+    >
       <h2 className="text-6xl md:text-7xl font-light tracking-widest text-[#D4AF37] mb-6">
         Contact
       </h2>
@@ -425,10 +436,8 @@ function Contact() {
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mb-16"></div>
 
       <div className="max-w-xl mx-auto bg-[#0F3A30] border border-[#D4AF37]/20 backdrop-blur-md rounded-2xl p-10 shadow-xl text-lg md:text-xl">
-
         <form ref={form} onSubmit={sendEmail} className="space-y-6">
-          <input type="hidden" name="send_time" id="send_time" />
-
+          
           <input
             type="text"
             name="name"
