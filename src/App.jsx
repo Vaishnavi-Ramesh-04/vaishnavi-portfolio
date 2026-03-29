@@ -427,16 +427,7 @@ function Contact() {
       <div className="max-w-xl mx-auto bg-[#0F3A30] border border-[#D4AF37]/20 backdrop-blur-md rounded-2xl p-10 shadow-xl text-lg md:text-xl">
 
         <form ref={form} onSubmit={sendEmail} className="space-y-6">
-          <div className="text-left">
-            <label htmlFor="send_time" className="block mb-2 text-[#D4AF37] font-medium">Date</label>
-            <input
-              type="text"
-              name="send_time"
-              id="send_time"
-              readOnly
-              className="w-full p-4 bg-[#123D33] text-[#F5F1E8] rounded-xl border border-[#D4AF37]/10 focus:ring-2 focus:ring-[#D4AF37] focus:outline-none transition mb-4"
-            />
-          </div>
+          <input type="hidden" name="send_time" id="send_time" />
 
           <input
             type="text"
