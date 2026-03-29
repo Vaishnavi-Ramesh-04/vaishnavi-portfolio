@@ -383,14 +383,17 @@ function Contact() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // Set the send_time input value to the current time
+    // Set the send_time input value to the current date and time (DD-MM-YYYY HH:mm)
     const formEl = form.current;
     if (formEl) {
       const now = new Date();
-      const timeString = now.toLocaleString();
+      const pad = (n) => n.toString().padStart(2, '0');
+      const dateString = pad(now.getDate()) + '-' + pad(now.getMonth() + 1) + '-' + now.getFullYear();
+      const timeString = pad(now.getHours()) + ':' + pad(now.getMinutes());
+      const dateTimeString = dateString + ' ' + timeString;
       const timeInput = formEl.elements['send_time'];
       if (timeInput) {
-        timeInput.value = timeString;
+        timeInput.value = dateTimeString;
       }
     }
 
@@ -424,7 +427,16 @@ function Contact() {
       <div className="max-w-xl mx-auto bg-[#0F3A30] border border-[#D4AF37]/20 backdrop-blur-md rounded-2xl p-10 shadow-xl text-lg md:text-xl">
 
         <form ref={form} onSubmit={sendEmail} className="space-y-6">
-          <input type="hidden" name="send_time" />
+          <div className="text-left">
+            <label htmlFor="send_time" className="block mb-2 text-[#D4AF37] font-medium">Date</label>
+            <input
+              type="text"
+              name="send_time"
+              id="send_time"
+              readOnly
+              className="w-full p-4 bg-[#123D33] text-[#F5F1E8] rounded-xl border border-[#D4AF37]/10 focus:ring-2 focus:ring-[#D4AF37] focus:outline-none transition mb-4"
+            />
+          </div>
 
           <input
             type="text"
