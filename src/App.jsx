@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaDownload, FaEnvelope, FaLaptopCode, FaServer, FaDatabase, FaCode, FaCogs } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaDownload, FaEnvelope, FaLaptopCode, FaServer, FaDatabase, FaCode, FaCogs, FaArrowRight } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 const fadeUp = {
@@ -171,8 +171,8 @@ function TypingText({ text }) {
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: 0.05,
-            delayChildren: 0.08
+            staggerChildren: 0.07,
+            delayChildren: 0.1
           }
         }
       }}
@@ -190,7 +190,7 @@ function TypingText({ text }) {
               opacity: 1,
               y: 0,
               filter: "blur(0px)",
-              transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] }
+              transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] }
             }
           }}
         >
@@ -282,12 +282,28 @@ function Skills() {
 
 function SkillCard({ title, items, icon: Icon, className = "" }) {
   return (
-    <div className={`${cardStyle} h-full min-h-[20rem] ${className}`}>
-      <div className="mb-6 flex items-center gap-4">
+    <motion.div
+      className={`${cardStyle} h-full min-h-[20rem] ${className}`}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.35 }}
+      transition={{ duration: 0.65, ease: "easeOut" }}
+      whileHover={{ x: 10 }}
+    >
+      <div className="mb-6 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#D4AF37]/30 bg-[#0B2E26] text-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.12)]">
           <Icon className="text-xl" />
         </div>
         <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37]">{title}</h3>
+        </div>
+        <motion.div
+          className="text-[#D4AF37]"
+          animate={{ x: [0, 6, 0] }}
+          transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <FaArrowRight />
+        </motion.div>
       </div>
       <ul className="space-y-3">
         {items.map((item) => (
@@ -297,7 +313,7 @@ function SkillCard({ title, items, icon: Icon, className = "" }) {
           </li>
         ))}
       </ul>
-    </div>
+    </motion.div>
   );
 }
 function QualificationCertifications() {
