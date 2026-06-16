@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaDownload, FaEnvelope, FaLaptopCode, FaServer, FaDatabase, FaCode, FaCogs } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -163,41 +163,41 @@ function About() {
 
 function TypingText({ text }) {
   const words = text.split(" ");
-  const [visibleWordCount, setVisibleWordCount] = useState(0);
-
-  useEffect(() => {
-    setVisibleWordCount(0);
-
-    let index = 0;
-    const intervalId = window.setInterval(() => {
-      index += 1;
-      setVisibleWordCount(index);
-
-      if (index >= words.length) {
-        window.clearInterval(intervalId);
-      }
-    }, 240);
-
-    return () => window.clearInterval(intervalId);
-  }, [text, words.length]);
 
   return (
-    <p className="text-lg md:text-xl text-[#F5F1E8]/80 leading-relaxed">
-      {words.slice(0, visibleWordCount).map((word, index) => (
+    <motion.p
+      className="text-lg md:text-xl text-[#F5F1E8]/80 leading-relaxed"
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.05,
+            delayChildren: 0.08
+          }
+        }
+      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.7 }}
+    >
+      {words.map((word, index) => (
         <motion.span
           key={`${word}-${index}`}
-          className="inline-block mr-2"
-          initial={{ opacity: 0, y: 12, filter: "blur(3px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.45, ease: "easeOut" }}
+          className="inline-block mr-2 whitespace-nowrap"
+          variants={{
+            hidden: { opacity: 0, y: 8, filter: "blur(2px)" },
+            visible: {
+              opacity: 1,
+              y: 0,
+              filter: "blur(0px)",
+              transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] }
+            }
+          }}
         >
           {word}
         </motion.span>
       ))}
-      <span className="ml-1 inline-block animate-pulse text-[#D4AF37]" aria-hidden="true">
-        |
-      </span>
-    </p>
+    </motion.p>
   );
 }
 
