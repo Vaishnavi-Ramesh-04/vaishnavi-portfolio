@@ -493,14 +493,13 @@ function QualificationCertifications() {
 
           <ul className="space-y-4">
             {[
-              "Keltron Internship Certification (Web Development)",
-              "Cognifyz – Machine Learning Internship",
-              "Saiket Internship – Web Development",
-              "Web Developer Bootcamp (Udemy)",
               "LCC Python Certification",
+              "Web Developer Bootcamp (Udemy)",
               "C, C++, Python – G-Tech",
               "Infosys Springboard Certifications (Overview of Agile and DevOps, Software Engineering Fundamentals, Python Bootcamp)",
-              "NPTEL – Developing Soft Skills & Personality"
+              "NPTEL – Developing Soft Skills & Personality",
+               "Google AI Essentials and Google Prompting Essentials – Coursera",
+              "Saiket Internship – Web Development",
             ].map((item) => (
               <li key={item} className="flex items-start gap-3 rounded-2xl border border-[#D4AF37]/10 bg-[#0B2E26]/40 px-4 py-3 text-base md:text-lg text-[#F5F1E8]/90 transition duration-300 hover:border-[#D4AF37]/25 hover:bg-[#0B2E26]/55">
                 <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.35)]"></span>
