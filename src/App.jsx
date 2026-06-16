@@ -170,7 +170,7 @@ function Skills() {
       title: "Backend",
       icon: FaServer,
       items: ["Python", "Node.js", "PHP"],
-      className: "md:-mt-10 md:scale-[1.05] md:min-h-[22rem]"
+      className: "md:-mt-10"
     },
     {
       title: "Database",
@@ -182,13 +182,13 @@ function Skills() {
       title: "Languages",
       icon: FaCode,
       items: ["C", "C++", "Java", "Python"],
-      className: "md:max-w-md md:justify-self-center"
+      className: "md:max-w-none md:justify-self-stretch"
     },
     {
       title: "Tools",
       icon: FaCogs,
       items: ["Git", "GitHub", "VS Code", "Postman", "Vercel"],
-      className: "md:max-w-md md:justify-self-center"
+      className: "md:max-w-none md:justify-self-stretch"
     }
   ];
 
@@ -203,7 +203,7 @@ function Skills() {
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mt-4 mb-16"></div>
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="grid gap-6 md:grid-cols-3 md:items-start">
+        <div className="grid gap-6 md:grid-cols-3 md:items-stretch">
           {skillsData.slice(0, 3).map((skill) => (
             <SkillCard
               key={skill.title}
@@ -215,7 +215,7 @@ function Skills() {
           ))}
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 md:max-w-4xl md:mx-auto">
+        <div className="mt-10 grid gap-6 md:grid-cols-2 md:max-w-4xl md:mx-auto md:items-stretch">
           {skillsData.slice(3).map((skill) => (
             <SkillCard
               key={skill.title}
@@ -234,7 +234,7 @@ function Skills() {
 
 function SkillCard({ title, items, icon: Icon, className = "" }) {
   return (
-    <div className={`${cardStyle} min-h-[18rem] ${className}`}>
+    <div className={`${cardStyle} h-full min-h-[20rem] ${className}`}>
       <div className="mb-6 flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#D4AF37]/30 bg-[#0B2E26] text-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.12)]">
           <Icon className="text-xl" />
