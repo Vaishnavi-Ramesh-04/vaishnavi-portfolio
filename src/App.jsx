@@ -162,27 +162,38 @@ function About() {
 }
 
 function TypingText({ text }) {
-  const [visibleText, setVisibleText] = useState("");
+  const words = text.split(" ");
+  const [visibleWordCount, setVisibleWordCount] = useState(0);
 
   useEffect(() => {
-    setVisibleText("");
+    setVisibleWordCount(0);
 
     let index = 0;
     const intervalId = window.setInterval(() => {
       index += 1;
-      setVisibleText(text.slice(0, index));
+      setVisibleWordCount(index);
 
-      if (index >= text.length) {
+      if (index >= words.length) {
         window.clearInterval(intervalId);
       }
-    }, 14);
+    }, 240);
 
     return () => window.clearInterval(intervalId);
-  }, [text]);
+  }, [text, words.length]);
 
   return (
     <p className="text-lg md:text-xl text-[#F5F1E8]/80 leading-relaxed">
-      {visibleText}
+      {words.slice(0, visibleWordCount).map((word, index) => (
+        <motion.span
+          key={`${word}-${index}`}
+          className="inline-block mr-2"
+          initial={{ opacity: 0, y: 12, filter: "blur(3px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ duration: 0.45, ease: "easeOut" }}
+        >
+          {word}
+        </motion.span>
+      ))}
       <span className="ml-1 inline-block animate-pulse text-[#D4AF37]" aria-hidden="true">
         |
       </span>
