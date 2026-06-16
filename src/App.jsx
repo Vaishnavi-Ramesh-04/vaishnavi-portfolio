@@ -239,6 +239,30 @@ function Skills() {
       className: "md:max-w-none md:justify-self-stretch"
     }
   ];
+  const cardRefs = useRef([]);
+  const containerRef = useRef(null);
+  const [slide, setSlide] = useState(null);
+
+  const handleNext = (index) => {
+    const total = skillsData.length;
+    const nextIndex = (index + 1) % total;
+
+    const currentEl = cardRefs.current[index];
+    const nextEl = cardRefs.current[nextIndex];
+    const containerEl = containerRef.current;
+    if (!currentEl || !nextEl || !containerEl) return;
+
+    const containerRect = containerEl.getBoundingClientRect();
+    const curRect = currentEl.getBoundingClientRect();
+    const nRect = nextEl.getBoundingClientRect();
+
+    const left = curRect.left - containerRect.left;
+    const top = curRect.top - containerRect.top;
+    const width = curRect.width;
+    const height = curRect.height;
+
+    setSlide({ from: index, to: nextIndex, left, top, width, height });
+  };
 
   return (
     <section id="skills" className={sectionStyle}>
@@ -250,42 +274,72 @@ function Skills() {
       {/* Gold Line */}
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mt-4 mb-16"></div>
 
-      <div className="relative mx-auto max-w-6xl">
+      <div ref={containerRef} className="relative mx-auto max-w-6xl">
         <div className="grid gap-6 md:grid-cols-3 md:items-stretch">
-          {skillsData.slice(0, 3).map((skill) => (
+          {skillsData.slice(0, 3).map((skill, i) => (
             <SkillCard
               key={skill.title}
               title={skill.title}
               items={skill.items}
               icon={skill.icon}
               className={skill.className}
+              index={i}
+              innerRef={(el) => (cardRefs.current[i] = el)}
+              onNext={handleNext}
             />
           ))}
         </div>
 
         <div className="mt-10 grid gap-6 md:grid-cols-2 md:max-w-4xl md:mx-auto md:items-stretch">
-          {skillsData.slice(3).map((skill) => (
-            <SkillCard
-              key={skill.title}
-              title={skill.title}
-              items={skill.items}
-              icon={skill.icon}
-              className={skill.className}
-            />
-          ))}
+          {skillsData.slice(3).map((skill, idx) => {
+            const i = idx + 3;
+            return (
+              <SkillCard
+                key={skill.title}
+                title={skill.title}
+                items={skill.items}
+                icon={skill.icon}
+                className={skill.className}
+                index={i}
+                innerRef={(el) => (cardRefs.current[i] = el)}
+                onNext={handleNext}
+              />
+            );
+          })}
         </div>
       </div>
+      {slide ? (
+        <motion.div
+          className="absolute z-50 overflow-hidden"
+          style={{ left: slide.left, top: slide.top, width: slide.width * 2, height: slide.height }}
+          initial={{ x: 0 }}
+          animate={{ x: -slide.width }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          onAnimationComplete={() => setSlide(null)}
+        >
+          <div style={{ width: slide.width * 2, height: slide.height, display: 'flex' }}>
+            <div style={{ width: slide.width, height: slide.height }}>
+              <SkillCard preview title={skillsData[slide.from].title} items={skillsData[slide.from].items} icon={skillsData[slide.from].icon} className={skillsData[slide.from].className} />
+            </div>
+            <div style={{ width: slide.width, height: slide.height }}>
+              <SkillCard preview title={skillsData[slide.to].title} items={skillsData[slide.to].items} icon={skillsData[slide.to].icon} className={skillsData[slide.to].className} />
+            </div>
+          </div>
+        </motion.div>
+      ) : null}
     </section>
   );
 }
 
 
-function SkillCard({ title, items, icon: Icon, className = "" }) {
+function SkillCard({ title, items, icon: Icon, className = "", index = 0, innerRef = null, onNext = null, preview = false }) {
   const [isMoving, setIsMoving] = useState(false);
   const moveTimerRef = useRef(null);
 
   const handleArrowClick = () => {
     setIsMoving(true);
+
+    if (typeof onNext === 'function') onNext(index);
 
     if (moveTimerRef.current) {
       window.clearTimeout(moveTimerRef.current);
@@ -296,8 +350,30 @@ function SkillCard({ title, items, icon: Icon, className = "" }) {
     }, 380);
   };
 
+  if (preview) {
+    return (
+      <div className={`${cardStyle} h-full min-h-[20rem] ${className}`}>
+        <div className="mb-6 flex items-center gap-4">
+          <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#D4AF37]/30 bg-[#0B2E26] text-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.12)]">
+            <Icon className="text-xl" />
+          </div>
+          <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37]">{title}</h3>
+        </div>
+        <ul className="space-y-3">
+          {items.map((item) => (
+            <li key={item} className="flex items-start gap-3 text-lg md:text-xl text-[#F5F1E8]/80">
+              <span className="text-[#D4AF37] text-2xl leading-none">•</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
   return (
     <motion.div
+      ref={innerRef}
       className={`${cardStyle} h-full min-h-[20rem] ${className}`}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
