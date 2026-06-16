@@ -64,7 +64,7 @@ function Hero() {
         <img 
   src="/vaishnavi-portfolio/vaishnavi.jpg"
   alt="Vaishnavi"
-  className="relative w-[400px] h-[400px] object-cover rounded-full border border-[#D4AF37]/40 shadow-[0_0_60px_rgba(212,175,55,0.2)]"
+  className="relative w-[400px] h-[400px] object-cover object-[center_28%] rounded-full border border-[#D4AF37]/40 shadow-[0_0_60px_rgba(212,175,55,0.2)]"
 />
 
       </motion.div>
@@ -82,7 +82,8 @@ function Hero() {
         <div className="w-24  bg-[#D4AF37] mt-6 mb-6 mx-auto md:mx-0"></div>
 
         <h3 className="text-xl tracking-wide text-[#F5F1E8]/90">
-          Student | Software & Web Developer | Aspiring Data Analyst & Problem Solver
+          Student | Software & Web Developer 
+          | Aspiring Data Analyst & Problem Solver
         </h3>
 
         <div className="mt-6 flex items-center gap-3 justify-center md:justify-start">
