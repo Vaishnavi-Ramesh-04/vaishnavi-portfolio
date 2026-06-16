@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaLinkedin, FaGithub, FaDownload, FaEnvelope } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaDownload, FaEnvelope, FaLaptopCode, FaServer, FaDatabase, FaCode, FaCogs } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
 import { useRef, useState } from "react";
 const fadeUp = {
@@ -82,7 +82,7 @@ function Hero() {
         <div className="w-24  bg-[#D4AF37] mt-6 mb-6 mx-auto md:mx-0"></div>
 
         <h3 className="text-xl tracking-wide text-[#F5F1E8]/90">
-          Student | Software & Web Developer
+          Student | Software & Web Developer |
           <span className="block mt-2">Aspiring Data Analyst & Problem Solver</span>
         </h3>
 
@@ -159,13 +159,38 @@ const cardStyle =
 
 /* ---------------- SKILLS ---------------- */
 function Skills() {
-  const languageSkills = ["C", "C++", "Java", "Python"];
-  const coreSkills = [
-    "Frontend: HTML, CSS, JavaScript, React, Tailwind CSS",
-    "Backend: Python, Node.js, PHP",
-    "Database: MySQL, MongoDB, PostgreSQL"
+  const skillsData = [
+    {
+      title: "Frontend",
+      icon: FaLaptopCode,
+      items: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"],
+      className: "md:translate-y-14"
+    },
+    {
+      title: "Backend",
+      icon: FaServer,
+      items: ["Python", "Node.js", "PHP"],
+      className: "md:-mt-10 md:scale-[1.05] md:min-h-[22rem]"
+    },
+    {
+      title: "Database",
+      icon: FaDatabase,
+      items: ["MySQL", "MongoDB", "PostgreSQL"],
+      className: "md:translate-y-14"
+    },
+    {
+      title: "Languages",
+      icon: FaCode,
+      items: ["C", "C++", "Java", "Python"],
+      className: "md:max-w-md md:justify-self-center"
+    },
+    {
+      title: "Tools",
+      icon: FaCogs,
+      items: ["Git", "GitHub", "VS Code", "Postman", "Vercel"],
+      className: "md:max-w-md md:justify-self-center"
+    }
   ];
-  const toolSkills = ["Git", "GitHub", "VS Code", "Postman", "Vercel"];
 
   return (
     <section id="skills" className={sectionStyle}>
@@ -178,18 +203,28 @@ function Skills() {
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mt-4 mb-16"></div>
 
       <div className="relative mx-auto max-w-6xl">
-        <div className="grid gap-6 md:grid-cols-[1fr_1.15fr_1fr] md:items-center">
-          <SkillCard title="Languages" items={languageSkills} className="md:translate-y-12" />
+        <div className="grid gap-6 md:grid-cols-3 md:items-start">
+          {skillsData.slice(0, 3).map((skill) => (
+            <SkillCard
+              key={skill.title}
+              title={skill.title}
+              items={skill.items}
+              icon={skill.icon}
+              className={skill.className}
+            />
+          ))}
+        </div>
 
-          <SkillCard
-            title="My Skills"
-            intro="A quick overview of the main areas I work with"
-            items={coreSkills}
-            className="md:-mt-8 md:scale-[1.03]"
-            compact={false}
-          />
-
-          <SkillCard title="Tools" items={toolSkills} className="md:translate-y-12" />
+        <div className="mt-10 grid gap-6 md:grid-cols-2 md:max-w-4xl md:mx-auto">
+          {skillsData.slice(3).map((skill) => (
+            <SkillCard
+              key={skill.title}
+              title={skill.title}
+              items={skill.items}
+              icon={skill.icon}
+              className={skill.className}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -197,13 +232,15 @@ function Skills() {
 }
 
 
-function SkillCard({ title, items, intro = "", className = "" }) {
+function SkillCard({ title, items, icon: Icon, className = "" }) {
   return (
-    <div className={`${cardStyle} ${className}`}>
-      <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37] mb-2">{title}</h3>
-      {intro ? (
-        <p className="text-sm md:text-base text-[#F5F1E8]/55 mb-6">{intro}</p>
-      ) : null}
+    <div className={`${cardStyle} min-h-[18rem] ${className}`}>
+      <div className="mb-6 flex items-center gap-4">
+        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[#D4AF37]/30 bg-[#0B2E26] text-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.12)]">
+          <Icon className="text-xl" />
+        </div>
+        <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37]">{title}</h3>
+      </div>
       <ul className="space-y-3">
         {items.map((item) => (
           <li key={item} className="flex items-start gap-3 text-lg md:text-xl text-[#F5F1E8]/80">
