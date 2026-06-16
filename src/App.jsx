@@ -82,7 +82,7 @@ function Hero() {
         <div className="w-24  bg-[#D4AF37] mt-6 mb-6 mx-auto md:mx-0"></div>
 
         <h3 className="text-xl tracking-wide text-[#F5F1E8]/90">
-          Student | Web Developer
+          Student | Software & Web Developer | Aspiring Data Analyst & Problem Solver
         </h3>
 
         <div className="mt-6 flex items-center gap-3 justify-center md:justify-start">
@@ -145,7 +145,7 @@ function About() {
         </p>
 
         <p className="mt-8 text-lg md:text-xl text-[#F5F1E8]/80 leading-relaxed">
-          I am a dedicated web developer passionate about creating refined, user-focused web applications. My expertise lies in modern front-end technologies and frameworks, enabling me to deliver efficient, scalable, and user-focused solutions. I am driven by continuous improvement, a strong attention to detail, and a commitment to writing clean, maintainable code. I bring a continuous-learning mindset and a passion for technology to every project I undertake.
+          I am a dedicated Software and Web Developer passionate about crafting modern, user-centric applications that combine functionality, performance, and elegant design. Skilled in contemporary web technologies and development frameworks, I focus on building scalable solutions that deliver exceptional user experiences. I enjoy exploring patterns, analyzing information, and solving complex problems through technology-driven approaches. With a commitment to continuous growth, clean coding practices, and innovation, I strive to create impactful digital solutions that bridge creativity and technical excellence.
         </p>
       </motion.div>
     </section>
@@ -158,6 +158,29 @@ const cardStyle =
 
 /* ---------------- SKILLS ---------------- */
 function Skills() {
+  const skillsData = [
+    {
+      title: "Frontend",
+      items: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"]
+    },
+    {
+      title: "Backend",
+      items: ["Python", "Node.js", "PHP"]
+    },
+    {
+      title: "Languages",
+      items: ["C", "C++", "Java", "Python"]
+    },
+    {
+      title: "Database",
+      items: ["MySQL", "MongoDB", "PostgreSQL"]
+    },
+    {
+      title: "Tools",
+      items: ["Git","GitHub", "VS Code","Postman","Vercel",]
+    }
+  ];
+
   return (
     <section id="skills" className={sectionStyle}>
       
@@ -169,29 +192,27 @@ function Skills() {
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mt-4 mb-16"></div>
 
       <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-        <SkillCard title="Frontend">
-          HTML, CSS, JavaScript, React, Tailwind CSS
-        </SkillCard>
-        <SkillCard title="Backend">
-          Python, Node.js, PHP, MySQL
-        </SkillCard>
-        <SkillCard title="Languages">
-          C, C++, Java, Python
-        </SkillCard>
-        <SkillCard title="Tools">
-          Git/GitHub, VS Code
-        </SkillCard>
+        {skillsData.map((skill) => (
+          <SkillCard key={skill.title} title={skill.title} items={skill.items} />
+        ))}
       </div>
     </section>
   );
 }
 
 
-function SkillCard({ title, children }) {
+function SkillCard({ title, items }) {
   return (
     <div className={cardStyle}>
-      <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37] mb-4">{title}</h3>
-      <p className="text-lg md:text-xl text-[#F5F1E8]/80">{children}</p>
+      <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37] mb-6">{title}</h3>
+      <ul className="space-y-3">
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-3 text-lg md:text-xl text-[#F5F1E8]/80">
+            <span className="text-[#D4AF37] text-2xl leading-none">•</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
