@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { FaLinkedin, FaGithub, FaDownload, FaEnvelope, FaLaptopCode, FaServer, FaDatabase, FaCode, FaCogs } from "react-icons/fa";
 import emailjs from "@emailjs/browser";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -126,6 +126,9 @@ const sectionStyle = "py-28 px-10 text-lg md:text-xl";
 
 /* ---------------- ABOUT ---------------- */
 function About() {
+  const aboutText =
+    "I am a dedicated Software and Web Developer passionate about crafting modern, user-centric applications that combine functionality, performance, and elegant design. Skilled in contemporary web technologies and development frameworks, I focus on building scalable solutions that deliver exceptional user experiences. I enjoy exploring patterns, analyzing information, and solving complex problems through technology-driven approaches. With a commitment to continuous growth, clean coding practices, and innovation, I strive to create impactful digital solutions that bridge creativity and technical excellence.";
+
   return (
     <section id="about" className={sectionStyle}>
       <motion.div
@@ -145,11 +148,45 @@ function About() {
           "Building elegant digital experiences through clean code and continuous learning."
         </p>
 
-        <p className="mt-8 text-lg md:text-xl text-[#F5F1E8]/80 leading-relaxed">
-          I am a dedicated Software and Web Developer passionate about crafting modern, user-centric applications that combine functionality, performance, and elegant design. Skilled in contemporary web technologies and development frameworks, I focus on building scalable solutions that deliver exceptional user experiences. I enjoy exploring patterns, analyzing information, and solving complex problems through technology-driven approaches. With a commitment to continuous growth, clean coding practices, and innovation, I strive to create impactful digital solutions that bridge creativity and technical excellence.
-        </p>
+        <motion.div
+          className="mt-8 text-lg md:text-xl text-[#F5F1E8]/80 leading-relaxed"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <TypingText text={aboutText} />
+        </motion.div>
       </motion.div>
     </section>
+  );
+}
+
+function TypingText({ text }) {
+  const [visibleText, setVisibleText] = useState("");
+
+  useEffect(() => {
+    setVisibleText("");
+
+    let index = 0;
+    const intervalId = window.setInterval(() => {
+      index += 1;
+      setVisibleText(text.slice(0, index));
+
+      if (index >= text.length) {
+        window.clearInterval(intervalId);
+      }
+    }, 14);
+
+    return () => window.clearInterval(intervalId);
+  }, [text]);
+
+  return (
+    <p className="text-lg md:text-xl text-[#F5F1E8]/80 leading-relaxed">
+      {visibleText}
+      <span className="ml-1 inline-block animate-pulse text-[#D4AF37]" aria-hidden="true">
+        |
+      </span>
+    </p>
   );
 }
 
