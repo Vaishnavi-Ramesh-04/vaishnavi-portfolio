@@ -57,7 +57,7 @@ function Hero() {
         initial={{ opacity: 0, x: -40 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 1 }}
-        className="relative flex items-center justify-center"
+        className="relative flex items-center justify-center md:-ml-8"
       >
         <div className="absolute w-[480px] h-[400px] bg-[#0F3A30] rounded-[60%] blur-3xl"></div>
 
@@ -82,8 +82,8 @@ function Hero() {
         <div className="w-24  bg-[#D4AF37] mt-6 mb-6 mx-auto md:mx-0"></div>
 
         <h3 className="text-xl tracking-wide text-[#F5F1E8]/90">
-          Student | Software & Web Developer 
-          | Aspiring Data Analyst & Problem Solver
+          Student | Software & Web Developer
+          <span className="block mt-2">Aspiring Data Analyst & Problem Solver</span>
         </h3>
 
         <div className="mt-6 flex items-center gap-3 justify-center md:justify-start">
@@ -159,28 +159,13 @@ const cardStyle =
 
 /* ---------------- SKILLS ---------------- */
 function Skills() {
-  const skillsData = [
-    {
-      title: "Frontend",
-      items: ["HTML", "CSS", "JavaScript", "React", "Tailwind CSS"]
-    },
-    {
-      title: "Backend",
-      items: ["Python", "Node.js", "PHP"]
-    },
-    {
-      title: "Languages",
-      items: ["C", "C++", "Java", "Python"]
-    },
-    {
-      title: "Database",
-      items: ["MySQL", "MongoDB", "PostgreSQL"]
-    },
-    {
-      title: "Tools",
-      items: ["Git","GitHub", "VS Code","Postman","Vercel",]
-    }
+  const languageSkills = ["C", "C++", "Java", "Python"];
+  const coreSkills = [
+    "Frontend: HTML, CSS, JavaScript, React, Tailwind CSS",
+    "Backend: Python, Node.js, PHP",
+    "Database: MySQL, MongoDB, PostgreSQL"
   ];
+  const toolSkills = ["Git", "GitHub", "VS Code", "Postman", "Vercel"];
 
   return (
     <section id="skills" className={sectionStyle}>
@@ -192,20 +177,33 @@ function Skills() {
       {/* Gold Line */}
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mt-4 mb-16"></div>
 
-      <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-        {skillsData.map((skill) => (
-          <SkillCard key={skill.title} title={skill.title} items={skill.items} />
-        ))}
+      <div className="relative mx-auto max-w-6xl">
+        <div className="grid gap-6 md:grid-cols-[1fr_1.15fr_1fr] md:items-center">
+          <SkillCard title="Languages" items={languageSkills} className="md:translate-y-12" />
+
+          <SkillCard
+            title="My Skills"
+            intro="A quick overview of the main areas I work with"
+            items={coreSkills}
+            className="md:-mt-8 md:scale-[1.03]"
+            compact={false}
+          />
+
+          <SkillCard title="Tools" items={toolSkills} className="md:translate-y-12" />
+        </div>
       </div>
     </section>
   );
 }
 
 
-function SkillCard({ title, items }) {
+function SkillCard({ title, items, intro = "", className = "" }) {
   return (
-    <div className={cardStyle}>
-      <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37] mb-6">{title}</h3>
+    <div className={`${cardStyle} ${className}`}>
+      <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37] mb-2">{title}</h3>
+      {intro ? (
+        <p className="text-sm md:text-base text-[#F5F1E8]/55 mb-6">{intro}</p>
+      ) : null}
       <ul className="space-y-3">
         {items.map((item) => (
           <li key={item} className="flex items-start gap-3 text-lg md:text-xl text-[#F5F1E8]/80">
