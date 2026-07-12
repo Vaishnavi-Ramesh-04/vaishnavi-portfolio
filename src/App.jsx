@@ -82,15 +82,18 @@ function Hero() {
         <div className="w-24  bg-[#D4AF37] mt-6 mb-6 mx-auto md:mx-0"></div>
 
         <h3 className="text-xl tracking-wide text-[#F5F1E8]/90">
-          Student | Software & Web Developer |
+          Student | Software Developer |
           <span className="block mt-2">Aspiring Data Analyst & Problem Solver</span>
         </h3>
 
         <div className="mt-6 flex items-center gap-3 justify-center md:justify-start">
           <FaEnvelope className="text-[#D4AF37]" />
-          <span className="text-[#F5F1E8]/80">
+          <a
+            href="mailto:vaishnaviramesh204@gmail.com"
+            className="text-[#F5F1E8]/80 hover:text-[#D4AF37] transition"
+          >
             vaishnaviramesh204@gmail.com
-          </span>
+          </a>
         </div>
 
         <div className="mt-10 flex gap-8 justify-center md:justify-start items-center">
@@ -127,7 +130,7 @@ const sectionStyle = "py-28 px-10 text-lg md:text-xl";
 /* ---------------- ABOUT ---------------- */
 function About() {
   const aboutText =
-    "I am a dedicated Software and Web Developer passionate about crafting modern, user-centric applications that combine functionality, performance, and elegant design. Skilled in contemporary web technologies and development frameworks, I focus on building scalable solutions that deliver exceptional user experiences. I enjoy exploring patterns, analyzing information, and solving complex problems through technology-driven approaches. With a commitment to continuous growth, clean coding practices, and innovation, I strive to create impactful digital solutions that bridge creativity and technical excellence.";
+    "I am a dedicated Software Developer with hands-on experience in building modern, user-centric applications that combine functionality, performance, and clean design. Proficient in Python, Java, C, and contemporary web technologies, I focus on developing scalable solutions that deliver seamless user experiences while solving complex problems through technology-driven approaches. With a strong foundation in database management, Git, Agile practices, and a commitment to continuous growth and clean coding, I strive to create impactful digital solutions that blend creativity with technical excellence.";
 
   return (
     <section id="about" className={sectionStyle}>
