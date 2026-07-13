@@ -266,10 +266,10 @@ function Skills() {
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mt-4 mb-16"></div>
 
       <div className="mx-auto max-w-3xl px-2">
-        <div className="relative pb-10">
+        <div className="relative pb-14 pt-2">
           <motion.div
-            className="pointer-events-none absolute inset-x-8 top-5 z-0 rounded-2xl border border-[#D4AF37]/20 bg-[#0E362D]/85 px-6 py-5 shadow-lg"
-            animate={{ y: [0, 3, 0] }}
+            className="pointer-events-none absolute inset-x-6 top-7 z-0 rounded-2xl border border-[#D4AF37]/22 bg-[#0E362D]/88 px-6 py-5 shadow-[0_22px_40px_rgba(0,0,0,0.35)]"
+            animate={{ y: [0, 4, 0], rotate: [-2.8, -2.2, -2.8] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
           >
             <p className="text-sm tracking-wide text-[#F5F1E8]/45">Next</p>
@@ -277,21 +277,25 @@ function Skills() {
           </motion.div>
 
           <motion.div
-            className="pointer-events-none absolute inset-x-14 top-10 z-0 rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/75 px-6 py-5 shadow-md"
-            animate={{ y: [0, 2, 0] }}
+            className="pointer-events-none absolute inset-x-12 top-[4.6rem] z-0 rounded-2xl border border-[#D4AF37]/14 bg-[#0B2E26]/80 px-6 py-5 shadow-[0_16px_30px_rgba(0,0,0,0.3)]"
+            animate={{ y: [0, 3, 0], rotate: [2.3, 1.8, 2.3] }}
             transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
           >
             <p className="text-sm tracking-wide text-[#F5F1E8]/35">Then</p>
             <p className="mt-1 text-lg text-[#D4AF37]/60">{thirdSkill.title}</p>
           </motion.div>
 
+          <div className="pointer-events-none absolute left-1/2 top-[7.4rem] z-0 -translate-x-1/2 rounded-full border border-[#D4AF37]/18 bg-[#0B2E26]/85 px-4 py-1 text-xs tracking-[0.2em] text-[#F5F1E8]/50">
+            +{Math.max(totalSkills - 3, 0)} MORE
+          </div>
+
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={`stack-${firstSkill.title}`}
               className="relative z-10"
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              initial={{ opacity: 0, y: 26, scale: 0.97, rotate: 1.4 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.98 }}
+              exit={{ opacity: 0, y: -22, scale: 0.98, rotate: -1.2 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
               <SkillCard
@@ -331,13 +335,13 @@ function SkillCard({ title, items, icon: Icon, className = "", onNext = null, cu
 
   return (
     <motion.div
-      className={`${cardStyle} h-full min-h-[20rem] ${className}`}
+      className={`${cardStyle} h-full min-h-[20rem] ${className} shadow-[0_34px_64px_rgba(0,0,0,0.4)]`}
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.35 }}
       transition={{ duration: 0.65, ease: "easeOut" }}
-      animate={{ x: isMoving ? 12 : 0 }}
-      whileHover={{ x: 10 }}
+      animate={{ x: isMoving ? 14 : 0, rotate: isMoving ? -0.8 : 0 }}
+      whileHover={{ y: -4, rotate: -0.35 }}
     >
       <div className="mb-6 flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
