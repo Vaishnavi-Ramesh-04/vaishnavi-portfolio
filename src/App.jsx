@@ -89,7 +89,9 @@ function Hero() {
         <div className="mt-6 flex items-center gap-3 justify-center md:justify-start">
           <FaEnvelope className="text-[#D4AF37]" />
           <a
-            href="mailto:vaishnaviramesh204@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=vaishnaviramesh204@gmail.com"
+            target="_blank"
+            rel="noreferrer"
             className="text-[#F5F1E8]/80 hover:text-[#D4AF37] transition"
           >
             vaishnaviramesh204@gmail.com
