@@ -294,8 +294,8 @@ function Skills() {
               key={`stack-${firstSkill.title}`}
               className="relative z-10"
               initial={{ opacity: 0, y: 26, scale: 0.97, rotate: 1.4 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -22, scale: 0.98, rotate: -1.2 }}
+              animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, x: 260, rotate: 8, scale: 0.96 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
               <SkillCard
@@ -342,6 +342,15 @@ function SkillCard({ title, items, icon: Icon, className = "", onNext = null, cu
       transition={{ duration: 0.65, ease: "easeOut" }}
       animate={{ x: isMoving ? 14 : 0, rotate: isMoving ? -0.8 : 0 }}
       whileHover={{ y: -4, rotate: -0.35 }}
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.18}
+      onDragEnd={(_, info) => {
+        if (info.offset.x > 80) {
+          handleArrowClick();
+        }
+      }}
+      whileTap={{ scale: 0.995 }}
     >
       <div className="mb-6 flex items-center justify-between gap-4">
         <div className="flex items-center gap-4">
