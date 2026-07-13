@@ -253,6 +253,7 @@ function Skills() {
 
   const firstSkill = skillsData[startIndex];
   const secondSkill = skillsData[(startIndex + 1) % totalSkills];
+  const thirdSkill = skillsData[(startIndex + 2) % totalSkills];
 
   return (
     <section id="skills" className={sectionStyle}>
@@ -264,41 +265,42 @@ function Skills() {
       {/* Gold Line */}
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mt-4 mb-16"></div>
 
-      <div className="mx-auto max-w-5xl">
-        <div className="grid gap-8 md:grid-cols-2 md:items-stretch">
+      <div className="mx-auto max-w-3xl px-2">
+        <div className="relative pb-10">
+          <motion.div
+            className="pointer-events-none absolute inset-x-8 top-5 z-0 rounded-2xl border border-[#D4AF37]/20 bg-[#0E362D]/85 px-6 py-5 shadow-lg"
+            animate={{ y: [0, 3, 0] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+          >
+            <p className="text-sm tracking-wide text-[#F5F1E8]/45">Next</p>
+            <p className="mt-1 text-lg text-[#D4AF37]/75">{secondSkill.title}</p>
+          </motion.div>
+
+          <motion.div
+            className="pointer-events-none absolute inset-x-14 top-10 z-0 rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/75 px-6 py-5 shadow-md"
+            animate={{ y: [0, 2, 0] }}
+            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+          >
+            <p className="text-sm tracking-wide text-[#F5F1E8]/35">Then</p>
+            <p className="mt-1 text-lg text-[#D4AF37]/60">{thirdSkill.title}</p>
+          </motion.div>
+
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
-              key={`primary-${firstSkill.title}`}
-              initial={{ opacity: 0, x: 35 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -35 }}
+              key={`stack-${firstSkill.title}`}
+              className="relative z-10"
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.98 }}
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
               <SkillCard
                 title={firstSkill.title}
                 items={firstSkill.items}
                 icon={firstSkill.icon}
-                className={firstSkill.className}
                 onNext={handleNext}
-              />
-            </motion.div>
-          </AnimatePresence>
-
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={`secondary-${secondSkill.title}`}
-              initial={{ opacity: 0, x: 35 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -35 }}
-              transition={{ duration: 0.35, ease: "easeOut" }}
-              className="hidden md:block"
-            >
-              <SkillCard
-                title={secondSkill.title}
-                items={secondSkill.items}
-                icon={secondSkill.icon}
-                className={secondSkill.className}
-                onNext={handleNext}
+                currentIndex={startIndex + 1}
+                total={totalSkills}
               />
             </motion.div>
           </AnimatePresence>
@@ -309,7 +311,7 @@ function Skills() {
 }
 
 
-function SkillCard({ title, items, icon: Icon, className = "", onNext = null }) {
+function SkillCard({ title, items, icon: Icon, className = "", onNext = null, currentIndex = 1, total = 1 }) {
   const [isMoving, setIsMoving] = useState(false);
   const moveTimerRef = useRef(null);
 
@@ -344,16 +346,21 @@ function SkillCard({ title, items, icon: Icon, className = "", onNext = null }) 
           </div>
           <h3 className="text-2xl md:text-3xl tracking-wide text-[#D4AF37]">{title}</h3>
         </div>
-        <motion.button
-          type="button"
-          aria-label={`Move ${title} card`}
-          onClick={handleArrowClick}
-          className="text-[#D4AF37] rounded-full p-2 transition hover:bg-[#0B2E26]/60"
-          animate={{ x: isMoving ? 10 : 0, rotate: isMoving ? 0 : 0 }}
-          transition={{ duration: 0.22, ease: "easeOut" }}
-        >
-          <FaArrowRight />
-        </motion.button>
+        <div className="flex items-center gap-3">
+          <span className="rounded-full border border-[#D4AF37]/30 px-3 py-1 text-xs tracking-[0.2em] text-[#F5F1E8]/70">
+            {currentIndex}/{total}
+          </span>
+          <motion.button
+            type="button"
+            aria-label={`Move ${title} card`}
+            onClick={handleArrowClick}
+            className="text-[#D4AF37] rounded-full p-2 transition hover:bg-[#0B2E26]/60"
+            animate={{ x: isMoving ? 10 : 0, rotate: isMoving ? 0 : 0 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+          >
+            <FaArrowRight />
+          </motion.button>
+        </div>
       </div>
       <ul className="space-y-3">
         {items.map((item) => (
