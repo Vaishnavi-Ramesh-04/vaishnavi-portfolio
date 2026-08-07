@@ -761,8 +761,12 @@ function Contact() {
         e.target.reset();
         setTimeout(() => setStatus(null), 3000);
       })
-      .catch(() => {
-        setStatus({ type: "error", message: "Failed to send message." });
+      .catch((error) => {
+        console.error("EmailJS send failed:", error);
+        setStatus({
+          type: "error",
+          message: error?.text || error?.message || "Failed to send message."
+        });
         setTimeout(() => setStatus(null), 3000);
       });
   };
