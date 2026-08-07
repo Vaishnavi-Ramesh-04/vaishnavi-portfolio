@@ -627,6 +627,23 @@ function Experience() {
 }
 
 function Projects() {
+  const projects = [
+    {
+      title: "AI Interviewer",
+      tech: "Next.js, TypeScript, Appwrite",
+      description:
+        "Built an AI-supported interview practice platform with secure authentication, resume upload, and guided assessment flows. Designed the experience to help candidates prepare through structured feedback and progress tracking.",
+      githubUrl: "https://github.com/Vaishnavi-Ramesh-04"
+    },
+    {
+      title: "ClassHub",
+      tech: "React.js, Node.js, MySQL",
+      description:
+        "Created a role-based classroom management system for coordinators, teachers, and students with assignment handling, announcements, meetings, reminders, and submission tracking. Focused on clarity, responsiveness, and everyday classroom workflow.",
+      githubUrl: "https://github.com/Vaishnavi-Ramesh-04"
+    }
+  ];
+
   return (
     <section id="projects" className="py-28 px-10 bg-[#123D33] text-lg md:text-xl">
 
@@ -643,41 +660,23 @@ function Projects() {
       <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mb-16"></div>
 
 
-      <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
-
-        <ProjectCard 
-          title="ClassHub"
-          desc="Developed ClassHub, a smart classroom management web application that centralizes assignments, announcements, and communication using a role-based system for coordinators, teachers, and students. Built with React, Node.js, and MySQL, the platform improves academic workflow efficiency through features like automated reminders and submission tracking."
-        />
-
-
-        <ProjectCard 
-          title="Machine Learning Projects"
-          desc="Developed machine learning models using Python and libraries like scikit-learn and TensorFlow for various applications including predictive analytics and image recognition. Project was for Restaurant rating prediction using ML algorithms, Cuisine classification, Location based analysis."
-        />
-
-        <ProjectCard 
-          title="Cake Website"
-          desc="Created a dynamic cake ordering website using HTML, CSS, and JavaScript, and PHP implementing features like product listings, shopping cart, and user authentication."
-        />
-
-        <ProjectCard 
-          title="To-Do List Website"
-          desc="Built a to-do list web application with functionalities to add, edit, delete, and mark tasks as complete using JavaScript for interactivity. Categorising works based on different sections like personal, work, urgent, Reminder setting facilities were few highlights."
-        />
-
-        <ProjectCard 
-          title="Canteen System"
-          desc="Developed a canteen system where new members can register, login & logout option, display menu, place order & accordingly the cart will be updated using PHP, HTML, CSS and JavaScript."
-        />
-
+      <div className="grid gap-10 md:grid-cols-2 max-w-6xl mx-auto">
+        {projects.map((project) => (
+          <ProjectCard
+            key={project.title}
+            title={project.title}
+            tech={project.tech}
+            desc={project.description}
+            githubUrl={project.githubUrl}
+          />
+        ))}
       </div>
     </section>
   );
 }
 
 
-function ProjectCard({ title, desc }) {
+function ProjectCard({ title, tech, desc, githubUrl }) {
   return (
     <motion.div
       variants={fadeUp}
@@ -685,12 +684,34 @@ function ProjectCard({ title, desc }) {
       whileInView="visible"
       viewport={{ once: true }}
       whileHover={{ scale: 1.03 }}
-      className="bg-[#0B2E26] p-10 rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition duration-500"
+      className="group relative overflow-hidden rounded-3xl border border-[#D4AF37]/16 bg-[#0B2E26]/92 p-8 md:p-10 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition duration-500 hover:border-[#D4AF37]/36 hover:shadow-[0_0_40px_rgba(212,175,55,0.14)]"
     >
-      <h3 className="text-2xl md:text-3xl font-light text-[#D4AF37] mb-4 tracking-wide">
-        {title}
-      </h3>
-      <p className="text-lg md:text-xl text-[#F5F1E8] leading-7">
+      <div className="absolute right-[-2rem] top-[-2rem] h-28 w-28 rounded-full bg-[#D4AF37]/8 blur-2xl transition duration-500 group-hover:bg-[#D4AF37]/12"></div>
+
+      <p className="text-xs uppercase tracking-[0.34em] text-[#F5F1E8]/45">Selected Work</p>
+      <div className="mt-2 flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h3 className="text-2xl md:text-3xl font-light text-[#D4AF37] tracking-wide">
+            {title}
+          </h3>
+          <p className="mt-2 text-sm md:text-base uppercase tracking-[0.22em] text-[#F5F1E8]/55">
+            {tech}
+          </p>
+        </div>
+
+        <a
+          href={githubUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/20 bg-[#0F3A30]/85 px-4 py-2 text-sm uppercase tracking-[0.2em] text-[#D4AF37] transition duration-300 hover:border-[#D4AF37]/45 hover:bg-[#D4AF37] hover:text-[#0B2E26]"
+          aria-label={`Open ${title} on GitHub`}
+        >
+          <FaGithub className="text-base" />
+          GitHub
+        </a>
+      </div>
+
+      <p className="mt-6 text-base md:text-lg leading-8 text-[#F5F1E8]/82">
         {desc}
       </p>
     </motion.div>
