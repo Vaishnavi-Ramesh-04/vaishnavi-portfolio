@@ -110,7 +110,7 @@ function Hero() {
           </a>
 
  <a
-  href="/vaishnavi-portfolio/resume.pdf"
+  href="/vaishnavi-portfolio/Vaishnavi_R_Resume.pdf"
   download="Vaishnavi_R_Resume.pdf"
   className="px-8 py-3 border border-[#D4AF37] text-[#D4AF37] rounded-full hover:bg-[#D4AF37] hover:text-[#0B2E26] transition duration-500"
 >
