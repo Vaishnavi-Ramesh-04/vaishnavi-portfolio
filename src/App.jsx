@@ -454,10 +454,7 @@ function QualificationCertifications() {
         Qualification & Certifications
       </motion.h2>
 
-      <p className="mx-auto mb-14 max-w-2xl text-center text-sm md:text-base leading-relaxed text-[#F5F1E8]/65">
-        Academic background and professional learning presented in a concise, structured format.
-      </p>
-
+      
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] max-w-6xl mx-auto">
 
         <motion.div
@@ -489,6 +486,7 @@ function QualificationCertifications() {
                 </span>
               </div>
               <p className="text-sm md:text-base text-[#F5F1E8]/75">SCMS School of Engineering and Technology</p>
+              <p className="mt-2 text-sm md:text-base text-[#F5F1E8]/60">Current CGPA: 9.39</p>
             </div>
 
             <div className="rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/48 p-5">
@@ -517,7 +515,7 @@ function QualificationCertifications() {
               <FaCertificate className="text-2xl" />
             </div>
             <div>
-              <p className="text-xs uppercase tracking-[0.34em] text-[#F5F1E8]/45">Training & Achievements</p>
+              <p className="text-xs uppercase tracking-[0.34em] text-[#F5F1E8]/45">Training & Courses</p>
               <h3 className="text-3xl md:text-[2.35rem] font-light text-[#D4AF37] tracking-wide">
                 Certifications
               </h3>
@@ -532,7 +530,8 @@ function QualificationCertifications() {
               "Infosys Springboard Certifications (Overview of Agile and DevOps, Software Engineering Fundamentals, Python Bootcamp)",
               "NPTEL – Developing Soft Skills & Personality",
               "Google AI Essentials and Google Prompting Essentials – Coursera",
-              "Saiket Internship – Web Development",
+              "Saiket & Cognifyz Internship – Web Development",
+              "Keltron Web Development Internship"
             ].map((item) => (
               <li key={item} className="flex items-start gap-4 rounded-2xl border border-[#D4AF37]/10 bg-[#0B2E26]/44 px-4 py-3 text-sm md:text-base leading-relaxed text-[#F5F1E8]/86 transition duration-300 hover:border-[#D4AF37]/20 hover:bg-[#0B2E26]/58">
                 <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.28)]"></span>
