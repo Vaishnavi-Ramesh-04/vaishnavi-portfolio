@@ -440,20 +440,23 @@ function SkillCard({ title, items, icon: Icon, className = "", onNext = null, cu
 function QualificationCertifications() {
   return (
     <section id="qualification" className="relative overflow-hidden py-28 px-10 bg-[#123D33] text-lg md:text-xl">
-      <div className="pointer-events-none absolute -top-24 left-[-6rem] h-72 w-72 rounded-full bg-[#D4AF37]/10 blur-3xl"></div>
-      <div className="pointer-events-none absolute bottom-0 right-[-5rem] h-80 w-80 rounded-full bg-[#0B2E26]/80 blur-3xl"></div>
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/35 to-transparent"></div>
+      <div className="pointer-events-none absolute -top-24 left-[-6rem] h-72 w-72 rounded-full bg-[#D4AF37]/8 blur-3xl"></div>
+      <div className="pointer-events-none absolute bottom-0 right-[-5rem] h-80 w-80 rounded-full bg-[#0B2E26]/70 blur-3xl"></div>
 
       <motion.h2
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-5xl md:text-6xl font-light tracking-widest text-[#D4AF37] text-center mb-6"
+        className="text-4xl md:text-5xl font-light tracking-[0.18em] text-[#D4AF37] text-center mb-4"
       >
         Qualification & Certifications
       </motion.h2>
 
-      <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mb-16"></div>
+      <p className="mx-auto mb-14 max-w-2xl text-center text-sm md:text-base leading-relaxed text-[#F5F1E8]/65">
+        Academic background and professional learning presented in a concise, structured format.
+      </p>
 
       <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] max-w-6xl mx-auto">
 
@@ -462,37 +465,41 @@ function QualificationCertifications() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="group relative overflow-hidden rounded-[28px] border border-[#D4AF37]/20 bg-gradient-to-br from-[#0B2E26] to-[#10382E] p-10 shadow-[0_18px_60px_rgba(0,0,0,0.18)] transition duration-500 hover:-translate-y-1 hover:border-[#D4AF37]/50 hover:shadow-[0_0_40px_rgba(212,175,55,0.18)]"
+          className="group relative overflow-hidden rounded-[28px] border border-[#D4AF37]/16 bg-[#0B2E26]/88 p-9 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition duration-500 hover:-translate-y-1 hover:border-[#D4AF37]/28"
         >
-          <div className="absolute right-[-2rem] top-[-2rem] h-28 w-28 rounded-full bg-[#D4AF37]/10 blur-2xl transition duration-500 group-hover:bg-[#D4AF37]/15"></div>
-          <div className="mb-6 flex items-center gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D4AF37]/25 bg-[#0B2E26] text-[#D4AF37] shadow-[0_0_24px_rgba(212,175,55,0.12)]">
+          <div className="absolute right-[-2rem] top-[-2rem] h-28 w-28 rounded-full bg-[#D4AF37]/8 blur-2xl transition duration-500 group-hover:bg-[#D4AF37]/12"></div>
+          <div className="mb-7 flex items-center gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D4AF37]/22 bg-[#0A2B23] text-[#D4AF37]">
               <FaGraduationCap className="text-2xl" />
             </div>
             <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-[#F5F1E8]/50">Academic Journey</p>
-              <h3 className="text-3xl md:text-4xl font-light text-[#D4AF37] tracking-wide">
+              <p className="text-xs uppercase tracking-[0.34em] text-[#F5F1E8]/45">Academic Journey</p>
+              <h3 className="text-3xl md:text-[2.35rem] font-light text-[#D4AF37] tracking-wide">
                 Qualification
               </h3>
             </div>
           </div>
 
-          <div className="space-y-6">
-            <div className="rounded-2xl border border-[#D4AF37]/15 bg-[#0B2E26]/55 p-5">
-              <div className="mb-2 flex items-center justify-between gap-4">
-                <p className="text-lg md:text-xl font-semibold text-[#F5F1E8]">B.Tech Computer Science</p>
-                <span className="rounded-full border border-[#D4AF37]/20 px-3 py-1 text-xs uppercase tracking-[0.25em] text-[#D4AF37]">2023 - 2027</span>
+          <div className="space-y-5">
+            <div className="rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/48 p-5">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <p className="text-base md:text-lg font-semibold text-[#F5F1E8]">B.Tech Computer Science</p>
+                <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">
+                  2023 - 2027
+                </span>
               </div>
-              <p className="text-base md:text-lg text-[#F5F1E8]/80">SCMS School of Engineering and Technology</p>
+              <p className="text-sm md:text-base text-[#F5F1E8]/75">SCMS School of Engineering and Technology</p>
             </div>
 
-            <div className="rounded-2xl border border-[#D4AF37]/15 bg-[#0B2E26]/55 p-5">
-              <div className="mb-2 flex items-center justify-between gap-4">
-                <p className="text-lg md:text-xl font-semibold text-[#F5F1E8]">Higher Secondary (CBSE)</p>
-                <span className="rounded-full border border-[#D4AF37]/20 px-3 py-1 text-xs uppercase tracking-[0.25em] text-[#D4AF37]">92.4%</span>
+            <div className="rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/48 p-5">
+              <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                <p className="text-base md:text-lg font-semibold text-[#F5F1E8]">Higher Secondary (CBSE)</p>
+                <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">
+                  92.4%
+                </span>
               </div>
-              <p className="text-base md:text-lg text-[#F5F1E8]/80">Vyasa Vidya Nikethan Central School</p>
-              <p className="mt-2 text-base md:text-lg text-[#F5F1E8]/70">2021 - 2023</p>
+              <p className="text-sm md:text-base text-[#F5F1E8]/75">Vyasa Vidya Nikethan Central School</p>
+              <p className="mt-2 text-sm md:text-base text-[#F5F1E8]/60">2021 - 2023</p>
             </div>
           </div>
         </motion.div>
@@ -502,33 +509,33 @@ function QualificationCertifications() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="group relative overflow-hidden rounded-[28px] border border-[#D4AF37]/20 bg-gradient-to-br from-[#0B2E26] to-[#10382E] p-10 shadow-[0_18px_60px_rgba(0,0,0,0.18)] transition duration-500 hover:-translate-y-1 hover:border-[#D4AF37]/50 hover:shadow-[0_0_40px_rgba(212,175,55,0.18)]"
+          className="group relative overflow-hidden rounded-[28px] border border-[#D4AF37]/16 bg-[#0B2E26]/88 p-9 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition duration-500 hover:-translate-y-1 hover:border-[#D4AF37]/28"
         >
-          <div className="absolute right-[-2rem] top-[-2rem] h-28 w-28 rounded-full bg-[#D4AF37]/10 blur-2xl transition duration-500 group-hover:bg-[#D4AF37]/15"></div>
-          <div className="mb-6 flex items-center gap-4">
-            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D4AF37]/25 bg-[#0B2E26] text-[#D4AF37] shadow-[0_0_24px_rgba(212,175,55,0.12)]">
+          <div className="absolute right-[-2rem] top-[-2rem] h-28 w-28 rounded-full bg-[#D4AF37]/8 blur-2xl transition duration-500 group-hover:bg-[#D4AF37]/12"></div>
+          <div className="mb-7 flex items-center gap-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-[#D4AF37]/22 bg-[#0A2B23] text-[#D4AF37]">
               <FaCertificate className="text-2xl" />
             </div>
             <div>
-              <p className="text-sm uppercase tracking-[0.35em] text-[#F5F1E8]/50">Training & Achievements</p>
-              <h3 className="text-3xl md:text-4xl font-light text-[#D4AF37] tracking-wide">
+              <p className="text-xs uppercase tracking-[0.34em] text-[#F5F1E8]/45">Training & Achievements</p>
+              <h3 className="text-3xl md:text-[2.35rem] font-light text-[#D4AF37] tracking-wide">
                 Certifications
               </h3>
             </div>
           </div>
 
-          <ul className="space-y-4">
+          <ul className="space-y-3">
             {[
               "LCC Python Certification",
               "Web Developer Bootcamp (Udemy)",
               "C, C++, Python – G-Tech",
               "Infosys Springboard Certifications (Overview of Agile and DevOps, Software Engineering Fundamentals, Python Bootcamp)",
               "NPTEL – Developing Soft Skills & Personality",
-               "Google AI Essentials and Google Prompting Essentials – Coursera",
+              "Google AI Essentials and Google Prompting Essentials – Coursera",
               "Saiket Internship – Web Development",
             ].map((item) => (
-              <li key={item} className="flex items-start gap-3 rounded-2xl border border-[#D4AF37]/10 bg-[#0B2E26]/40 px-4 py-3 text-base md:text-lg text-[#F5F1E8]/90 transition duration-300 hover:border-[#D4AF37]/25 hover:bg-[#0B2E26]/55">
-                <span className="mt-1 h-2.5 w-2.5 rounded-full bg-[#D4AF37] shadow-[0_0_12px_rgba(212,175,55,0.35)]"></span>
+              <li key={item} className="flex items-start gap-4 rounded-2xl border border-[#D4AF37]/10 bg-[#0B2E26]/44 px-4 py-3 text-sm md:text-base leading-relaxed text-[#F5F1E8]/86 transition duration-300 hover:border-[#D4AF37]/20 hover:bg-[#0B2E26]/58">
+                <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.28)]"></span>
                 <span>{item}</span>
               </li>
             ))}
