@@ -633,14 +633,14 @@ function Projects() {
       tech: "Next.js, TypeScript, Appwrite",
       description:
         "Built an AI-supported interview practice platform with secure authentication, resume upload, and guided assessment flows. Designed the experience to help candidates prepare through structured feedback and progress tracking.",
-      githubUrl: "https://github.com/Vaishnavi-Ramesh-04"
+      githubUrl: "https://github.com/Vaishnavi-Ramesh-04/AI-Interviewer"
     },
     {
       title: "ClassHub",
       tech: "React.js, Node.js, MySQL",
       description:
         "Created a role-based classroom management system for coordinators, teachers, and students with assignment handling, announcements, meetings, reminders, and submission tracking. Focused on clarity, responsiveness, and everyday classroom workflow.",
-      githubUrl: "https://github.com/Vaishnavi-Ramesh-04"
+      githubUrl: "https://github.com/Vaishnavi-Ramesh-04/classHub"
     }
   ];
 
