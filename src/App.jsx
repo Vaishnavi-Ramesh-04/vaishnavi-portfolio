@@ -245,6 +245,7 @@ function Skills() {
     }
   ];
   const [startIndex, setStartIndex] = useState(0);
+  const [isSwiping, setIsSwiping] = useState(false);
   const totalSkills = skillsData.length;
 
   const handleNext = () => {
@@ -268,31 +269,37 @@ function Skills() {
       <div className="mx-auto max-w-3xl px-2">
         <div className="relative pb-14 pt-2">
           <motion.div
-            className="pointer-events-none absolute inset-x-6 top-7 z-0 rounded-2xl border border-[#D4AF37]/22 bg-[#0E362D]/88 px-6 py-5 shadow-[0_22px_40px_rgba(0,0,0,0.35)]"
-            animate={{ y: [0, 4, 0], rotate: [-2.8, -2.2, -2.8] }}
-            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+            className="pointer-events-none absolute inset-x-8 top-10 z-0 rounded-[2rem] border border-[#D4AF37]/14 bg-[#0B2E26]/70 px-6 py-6 shadow-[0_22px_40px_rgba(0,0,0,0.32)]"
+            animate={{
+              opacity: isSwiping ? 0 : 1,
+              y: isSwiping ? 44 : 26,
+              x: isSwiping ? 18 : 10,
+              rotate: -8,
+              scale: isSwiping ? 0.94 : 0.98
+            }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            <p className="text-sm tracking-wide text-[#F5F1E8]/45">Next</p>
-            <p className="mt-1 text-lg text-[#D4AF37]/75">{secondSkill.title}</p>
+            <SkillStackCardPreview skill={thirdSkill} offset="far" />
           </motion.div>
 
           <motion.div
-            className="pointer-events-none absolute inset-x-12 top-[4.6rem] z-0 rounded-2xl border border-[#D4AF37]/14 bg-[#0B2E26]/80 px-6 py-5 shadow-[0_16px_30px_rgba(0,0,0,0.3)]"
-            animate={{ y: [0, 3, 0], rotate: [2.3, 1.8, 2.3] }}
-            transition={{ duration: 2.8, repeat: Infinity, ease: "easeInOut", delay: 0.2 }}
+            className="pointer-events-none absolute inset-x-14 top-[4.75rem] z-0 rounded-[2rem] border border-[#D4AF37]/18 bg-[#0E362D]/82 px-6 py-6 shadow-[0_18px_34px_rgba(0,0,0,0.32)]"
+            animate={{
+              opacity: isSwiping ? 0 : 1,
+              y: isSwiping ? 22 : 10,
+              x: isSwiping ? 8 : 4,
+              rotate: -4,
+              scale: isSwiping ? 0.97 : 1
+            }}
+            transition={{ duration: 0.35, ease: "easeOut", delay: 0.04 }}
           >
-            <p className="text-sm tracking-wide text-[#F5F1E8]/35">Then</p>
-            <p className="mt-1 text-lg text-[#D4AF37]/60">{thirdSkill.title}</p>
+            <SkillStackCardPreview skill={secondSkill} offset="near" />
           </motion.div>
-
-          <div className="pointer-events-none absolute left-1/2 top-[7.4rem] z-0 -translate-x-1/2 rounded-full border border-[#D4AF37]/18 bg-[#0B2E26]/85 px-4 py-1 text-xs tracking-[0.2em] text-[#F5F1E8]/50">
-            +{Math.max(totalSkills - 3, 0)} MORE
-          </div>
 
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={`stack-${firstSkill.title}`}
-              className="relative z-10"
+              className="relative z-20"
               initial={{ opacity: 0, y: 26, scale: 0.97, rotate: 1.4 }}
               animate={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
               exit={{ opacity: 0, x: 260, rotate: 8, scale: 0.96 }}
@@ -305,6 +312,7 @@ function Skills() {
                 onNext={handleNext}
                 currentIndex={startIndex + 1}
                 total={totalSkills}
+                onSwipeStateChange={setIsSwiping}
               />
             </motion.div>
           </AnimatePresence>
@@ -315,12 +323,48 @@ function Skills() {
 }
 
 
-function SkillCard({ title, items, icon: Icon, className = "", onNext = null, currentIndex = 1, total = 1 }) {
+function SkillStackCardPreview({ skill, offset }) {
+  const Icon = skill.icon;
+
+  const styles =
+    offset === "far"
+      ? "border-[#D4AF37]/10 bg-[#0A2B23]/80 shadow-[0_12px_24px_rgba(0,0,0,0.26)]"
+      : "border-[#D4AF37]/16 bg-[#0C3229]/88 shadow-[0_14px_28px_rgba(0,0,0,0.28)]";
+
+  return (
+    <div className={`rounded-[1.75rem] border ${styles}`}>
+      <div className="flex items-center gap-3 border-b border-[#D4AF37]/10 px-5 py-4">
+        <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-[#D4AF37]/25 bg-[#0B2E26] text-[#D4AF37]">
+          <Icon className="text-lg" />
+        </div>
+        <div>
+          <p className="text-xs uppercase tracking-[0.28em] text-[#F5F1E8]/40">Stack preview</p>
+          <h4 className="text-xl tracking-wide text-[#D4AF37]">{skill.title}</h4>
+        </div>
+      </div>
+      <div className="px-5 py-4">
+        <div className="grid gap-2 sm:grid-cols-2">
+          {skill.items.slice(0, 4).map((item) => (
+            <span
+              key={item}
+              className="rounded-full border border-[#D4AF37]/12 bg-[#0B2E26]/70 px-3 py-2 text-sm text-[#F5F1E8]/70"
+            >
+              {item}
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SkillCard({ title, items, icon: Icon, className = "", onNext = null, currentIndex = 1, total = 1, onSwipeStateChange = null }) {
   const [isMoving, setIsMoving] = useState(false);
   const moveTimerRef = useRef(null);
 
   const handleArrowClick = () => {
     setIsMoving(true);
+    if (typeof onSwipeStateChange === "function") onSwipeStateChange(true);
 
     if (typeof onNext === "function") onNext();
 
@@ -330,6 +374,7 @@ function SkillCard({ title, items, icon: Icon, className = "", onNext = null, cu
 
     moveTimerRef.current = window.setTimeout(() => {
       setIsMoving(false);
+      if (typeof onSwipeStateChange === "function") onSwipeStateChange(false);
     }, 380);
   };
 
@@ -340,15 +385,21 @@ function SkillCard({ title, items, icon: Icon, className = "", onNext = null, cu
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.35 }}
       transition={{ duration: 0.65, ease: "easeOut" }}
-      animate={{ x: isMoving ? 14 : 0, rotate: isMoving ? -0.8 : 0 }}
+      animate={{ x: isMoving ? 14 : 0, rotate: isMoving ? -0.8 : 0, scale: isMoving ? 0.995 : 1 }}
       whileHover={{ y: -4, rotate: -0.35 }}
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.18}
+      onDragStart={() => {
+        if (typeof onSwipeStateChange === "function") onSwipeStateChange(true);
+      }}
       onDragEnd={(_, info) => {
         if (info.offset.x > 80) {
           handleArrowClick();
+          return;
         }
+
+        if (typeof onSwipeStateChange === "function") onSwipeStateChange(false);
       }}
       whileTap={{ scale: 0.995 }}
     >
