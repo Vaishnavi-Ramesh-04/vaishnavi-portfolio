@@ -357,10 +357,10 @@ function SkillStackCardPreview({ skill, offset }) {
     </div>
   );
 }
-
+                  <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">2021 - 2023</span>
 function SkillCard({ title, items, icon: Icon, className = "", onNext = null, currentIndex = 1, total = 1, onSwipeStateChange = null }) {
   const [isMoving, setIsMoving] = useState(false);
-  const moveTimerRef = useRef(null);
+                <p className="mt-2 text-sm md:text-base text-[#F5F1E8]/60">92.4%</p>
 
   const handleArrowClick = () => {
     setIsMoving(true);
@@ -548,37 +548,59 @@ function QualificationCertifications() {
 
 function Experience() {
   return (
-    <section className="py-28 px-10 bg-[#0B2E26] text-lg md:text-xl">
+    <section className="relative overflow-hidden py-28 px-10 bg-[#0B2E26] text-lg md:text-xl">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/25 to-transparent"></div>
+      <div className="pointer-events-none absolute -left-16 top-10 h-64 w-64 rounded-full bg-[#D4AF37]/6 blur-3xl"></div>
+      <div className="pointer-events-none absolute -bottom-16 right-0 h-72 w-72 rounded-full bg-[#123D33]/70 blur-3xl"></div>
 
       <motion.h2
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="text-5xl md:text-6xl font-light tracking-widest text-[#D4AF37] text-center mb-6"
+        className="text-4xl md:text-5xl font-light tracking-[0.18em] text-[#D4AF37] text-center mb-4"
       >
-        Experience & Leadership
+        Experience
       </motion.h2>
 
-      <div className="w-24 h-[2px] bg-[#D4AF37] mx-auto mb-16"></div>
+      <p className="mx-auto mb-14 max-w-2xl text-center text-sm md:text-base leading-relaxed text-[#F5F1E8]/65">
+        Recent professional experience in web development, presented with clear role hierarchy and dates.
+      </p>
 
       <motion.div
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto bg-[#123D33] p-10 rounded-2xl border border-[#D4AF37]/20 hover:border-[#D4AF37]/60 hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition duration-500 text-lg md:text-xl text-[#F5F1E8] space-y-6"
+        className="max-w-4xl mx-auto rounded-[28px] border border-[#D4AF37]/16 bg-[#123D33]/92 p-10 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition duration-500 hover:border-[#D4AF37]/28"
       >
-        <p>
-          <strong>Student Member</strong><br />
-          Institution's Innovation Council (IIC)
-        </p>
+        <div className="space-y-5">
+          <div className="rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/48 p-5">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+              <p className="text-base md:text-lg font-semibold text-[#F5F1E8]">Web Development Intern</p>
+              <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">
+                June 15 - June 26
+              </span>
+            </div>
+            <p className="text-sm md:text-base text-[#D4AF37]">Cadesys</p>
+            <p className="mt-2 text-sm md:text-base leading-relaxed text-[#F5F1E8]/72">
+              Contributed to web development tasks with a focus on implementation, refinement, and delivery support.
+            </p>
+          </div>
 
-        <p>
-          <strong>Internship Coordinator</strong><br />
-          Institution's Innovation Council (IIC)<br />
-          2025 – 2026
-        </p>
+          <div className="rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/48 p-5">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+              <p className="text-base md:text-lg font-semibold text-[#F5F1E8]">Part-time Web Developer</p>
+              <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">
+                June 29 - Present
+              </span>
+            </div>
+            <p className="text-sm md:text-base text-[#D4AF37]">Cadesys</p>
+            <p className="mt-2 text-sm md:text-base leading-relaxed text-[#F5F1E8]/72">
+              Currently supporting web development work in an ongoing capacity with attention to maintainability and polish.
+            </p>
+          </div>
+        </div>
       </motion.div>
     </section>
   );
