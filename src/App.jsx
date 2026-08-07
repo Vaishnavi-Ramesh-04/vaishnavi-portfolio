@@ -549,16 +549,16 @@ function QualificationCertifications() {
 function Experience() {
   const roadmap = [
     {
-      title: "Web Development Intern",
-      company: "Cadesys",
-      date: "June 15 - June 26",
-      description: "Contributed to web development tasks with a focus on implementation, refinement, and delivery support."
-    },
-    {
       title: "Part-time Web Developer",
-      company: "Cadesys",
+      company: "Cadeosys",
       date: "June 29 - Present",
       description: "Currently supporting web development work in an ongoing capacity with attention to maintainability and polish."
+    },
+    {
+      title: "Web Development Intern",
+      company: "Cadeosys",
+      date: "June 15 - June 26",
+      description: "Contributed to web development tasks with a focus on implementation, refinement, and delivery support."
     }
   ];
 
@@ -578,10 +578,7 @@ function Experience() {
         Experience
       </motion.h2>
 
-      <p className="mx-auto mb-14 max-w-2xl text-center text-sm md:text-base leading-relaxed text-[#F5F1E8]/65">
-        Recent professional experience in web development, presented with clear role hierarchy and dates.
-      </p>
-
+      
       <motion.div
         variants={fadeUp}
         initial="hidden"
@@ -611,7 +608,9 @@ function Experience() {
                           {step.date}
                         </span>
                       </div>
-                      <p className="text-sm md:text-base text-[#D4AF37]">{step.company}</p>
+                      <p className="inline-flex rounded-full border border-[#D4AF37]/18 bg-[#0F3A30]/80 px-3 py-1 text-xs uppercase tracking-[0.22em] text-[#D4AF37]">
+                        {step.company}
+                      </p>
                       <p className="mt-2 text-sm md:text-base leading-relaxed text-[#F5F1E8]/72">
                         {step.description}
                       </p>
