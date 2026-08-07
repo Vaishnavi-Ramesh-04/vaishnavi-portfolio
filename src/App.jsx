@@ -493,11 +493,11 @@ function QualificationCertifications() {
               <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
                 <p className="text-base md:text-lg font-semibold text-[#F5F1E8]">Higher Secondary (CBSE)</p>
                 <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">
-                  92.4%
+                  2021 - 2023
                 </span>
               </div>
               <p className="text-sm md:text-base text-[#F5F1E8]/75">Vyasa Vidya Nikethan Central School</p>
-              <p className="mt-2 text-sm md:text-base text-[#F5F1E8]/60">2021 - 2023</p>
+              <p className="mt-2 text-sm md:text-base text-[#F5F1E8]/60">92.4%</p>
             </div>
           </div>
         </motion.div>
@@ -547,6 +547,21 @@ function QualificationCertifications() {
 }
 
 function Experience() {
+  const roadmap = [
+    {
+      title: "Web Development Intern",
+      company: "Cadesys",
+      date: "June 15 - June 26",
+      description: "Contributed to web development tasks with a focus on implementation, refinement, and delivery support."
+    },
+    {
+      title: "Part-time Web Developer",
+      company: "Cadesys",
+      date: "June 29 - Present",
+      description: "Currently supporting web development work in an ongoing capacity with attention to maintainability and polish."
+    }
+  ];
+
   return (
     <section className="relative overflow-hidden py-28 px-10 bg-[#0B2E26] text-lg md:text-xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D4AF37]/25 to-transparent"></div>
@@ -572,33 +587,39 @@ function Experience() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        className="max-w-4xl mx-auto rounded-[28px] border border-[#D4AF37]/16 bg-[#123D33]/92 p-10 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition duration-500 hover:border-[#D4AF37]/28"
+        className="max-w-5xl mx-auto rounded-[28px] border border-[#D4AF37]/16 bg-[#123D33]/92 p-8 md:p-10 shadow-[0_18px_50px_rgba(0,0,0,0.18)] transition duration-500 hover:border-[#D4AF37]/28"
       >
-        <div className="space-y-5">
-          <div className="rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/48 p-5">
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-              <p className="text-base md:text-lg font-semibold text-[#F5F1E8]">Web Development Intern</p>
-              <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">
-                June 15 - June 26
-              </span>
-            </div>
-            <p className="text-sm md:text-base text-[#D4AF37]">Cadesys</p>
-            <p className="mt-2 text-sm md:text-base leading-relaxed text-[#F5F1E8]/72">
-              Contributed to web development tasks with a focus on implementation, refinement, and delivery support.
-            </p>
-          </div>
+        <div className="relative">
+          <div className="absolute left-4 top-6 bottom-6 w-px bg-gradient-to-b from-[#D4AF37]/25 via-[#D4AF37]/60 to-[#D4AF37]/20 md:left-1/2 md:-translate-x-1/2"></div>
 
-          <div className="rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/48 p-5">
-            <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-              <p className="text-base md:text-lg font-semibold text-[#F5F1E8]">Part-time Web Developer</p>
-              <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">
-                June 29 - Present
-              </span>
-            </div>
-            <p className="text-sm md:text-base text-[#D4AF37]">Cadesys</p>
-            <p className="mt-2 text-sm md:text-base leading-relaxed text-[#F5F1E8]/72">
-              Currently supporting web development work in an ongoing capacity with attention to maintainability and polish.
-            </p>
+          <div className="space-y-8 md:space-y-10">
+            {roadmap.map((step, index) => {
+              const isLeft = index % 2 === 0;
+
+              return (
+                <div
+                  key={step.title}
+                  className={`relative flex items-start gap-6 pl-12 md:pl-0 ${isLeft ? "md:justify-start" : "md:justify-end"}`}
+                >
+                  <div className="absolute left-1 top-2 z-10 h-4 w-4 rounded-full border-2 border-[#D4AF37] bg-[#0B2E26] shadow-[0_0_18px_rgba(212,175,55,0.35)] md:left-1/2 md:-translate-x-1/2"></div>
+
+                  <div className={`w-full md:w-[46%] ${isLeft ? "md:pr-10" : "md:pl-10"}`}>
+                    <div className="rounded-2xl border border-[#D4AF37]/12 bg-[#0B2E26]/48 p-5 md:p-6">
+                      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+                        <p className="text-base md:text-lg font-semibold text-[#F5F1E8]">{step.title}</p>
+                        <span className="rounded-full border border-[#D4AF37]/18 px-3 py-1 text-[0.72rem] uppercase tracking-[0.24em] text-[#D4AF37]">
+                          {step.date}
+                        </span>
+                      </div>
+                      <p className="text-sm md:text-base text-[#D4AF37]">{step.company}</p>
+                      <p className="mt-2 text-sm md:text-base leading-relaxed text-[#F5F1E8]/72">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </motion.div>
